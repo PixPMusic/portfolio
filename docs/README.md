@@ -4,7 +4,7 @@ DevsCard is a fully customizable template to create your online resume without w
 
 Apart from the website template, DevsCard offers you plenty of additional features that will make it easier to take care of your online and offline presence, including:
 
-- **✍️ Intellisense** — provide your data in TypeScript files, getting autocompletion and description of each property right in your IDE.
+- **✍️ Intellisense** — provide your data in Markdown files with defined schemas, getting autocompletion and type validation.
 - **📱 Responsiveness** — the resume is created and automatically tested to look great on mobile and desktop devices.
 - **🌠 Assets optimization** — all images in your CV are minimized and resized automatically at build time.
 - **⚡️ Performance** — get 100 for all Lighthouse metrics, ensuring a great experience for visitors and a high score for search engines.

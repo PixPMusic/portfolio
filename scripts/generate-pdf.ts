@@ -3,8 +3,7 @@ import * as path from 'node:path';
 import * as puppeteer from 'puppeteer';
 import { pdfPage } from 'puppeteer-report';
 
-const waitFor = (ms: number) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
+const waitFor = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const goTo = async (page: puppeteer.Page, url: string) => {
   await page.goto(url, { waitUntil: 'networkidle0' });
@@ -18,11 +17,7 @@ interface RetryOptions {
   retryTime: number;
 }
 
-const retry = async ({
-  promise,
-  retries,
-  retryTime,
-}: RetryOptions): GoToReturn => {
+const retry = async ({ promise, retries, retryTime }: RetryOptions): GoToReturn => {
   try {
     return await promise();
   } catch (error) {
@@ -35,7 +30,7 @@ const retry = async ({
 };
 
 const main = async () => {
-  const child = exec('npm run dev');
+  const child = exec('bun run dev');
 
   const browser = await puppeteer.launch({ headless: 'shell' });
 
@@ -53,7 +48,7 @@ const main = async () => {
     path: path.join(__dirname, '..', 'public', 'cv.pdf'),
     format: 'A4',
     printBackground: true,
-    margin: { top: '10mm', right: '10mm', bottom: '10mm', left: '10mm' },
+    margin: { top: '0', right: '0', bottom: '0', left: '0' },
   });
 
   await browser.close();

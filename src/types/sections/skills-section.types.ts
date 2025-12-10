@@ -30,5 +30,5 @@ export interface SkillsSection extends Section {
   /**
    * Grouped lists of your skills.
    */
-  skillSets: SkillSet[];
+  skillSets?: SkillSet[];
 }

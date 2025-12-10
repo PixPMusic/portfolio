@@ -1,8 +1,5 @@
 ---
-import type {
-  LevelledSkill as LevelledSkillType,
-  SkillSet,
-} from '@/types/sections/skills-section.types';
+import type { LevelledSkill as LevelledSkillType, SkillSet } from '@/types/sections/skills-section.types';
 import TagsList from '@/web/components/tags-list.astro';
 import Typography from '@/web/components/typography.astro';
 import LevelledSkill from './levelled-skill.astro';
@@ -11,9 +8,7 @@ export interface Props extends SkillSet {}
 
 const { skills, title } = Astro.props;
 
-const isLevelledSkillSection = (
-  skills: Props['skills']
-): skills is LevelledSkillType[] => {
+const isLevelledSkillSection = (skills: Props['skills']): skills is LevelledSkillType[] => {
   const firstSkill = skills[0];
   if (!firstSkill) return false;
 

@@ -103,27 +103,22 @@ export interface SubSection<Data = unknown> {
   /**
    * [WEB] List of items to display within the subsection.
    */
-  data: Data[];
+  data?: Data[];
+}
+
+export interface FavoriteItem {
+  title: string;
+  subtitle?: string;
+  image: Photo;
+  url: string;
+}
+
+export interface FavoriteSubSection {
+  title: string;
+  size: 'tall' | 'square' | 'wide';
+  items: FavoriteItem[];
 }
 
 export interface FavoritesSection extends Section {
-  /**
-   * [WEB] List of your favorite books.
-   */
-  books?: SubSection<Book>;
-
-  /**
-   * [WEB] List of the people that inspire you.
-   */
-  people?: SubSection<Person>;
-
-  /**
-   * [WEB] List of the videos you learned the most from.
-   */
-  videos?: SubSection<Video>;
-
-  /**
-   * [WEB] List of other media types that helps you to growth in your field.
-   */
-  medias?: SubSection<Media>;
+  favorites?: FavoriteSubSection[];
 }

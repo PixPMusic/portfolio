@@ -1,8 +1,9 @@
 {
-  "name": "devscard",
-  "description": "Template for creating a comprehensive virtual CV for developers.",
-  "version": "0.3.0",
+  "name": "pixels-portfolio",
+  "description": "Alex Jankowiak's Personal Portfolio & CV",
+  "version": "0.5.0",
   "private": true,
+  "author": "Alex Jankowiak <me@pixp.cc>",
   "trustedDependencies": [
     "@astrojs/check",
     "@astrojs/node",
@@ -16,7 +17,6 @@
     "vite",
     "@astrojs/react",
     "@astrojs/tailwind",
-    "@percy/cli",
     "@types/marked",
     "astro",
     "astro-compress",
@@ -54,12 +54,12 @@
     "build": "astro build",
     "postbuild": "move-file ./src/pages/_pdf.astro ./src/pages/pdf.astro",
     "preview": "astro preview",
-    "generate-pdf": "ts-node scripts/generate-pdf.ts",
-    "generate-favicons": "ts-node scripts/generate-favicons.ts",
+    "generate-pdf": "bun scripts/generate-pdf.ts",
+    "generate-favicons": "bun scripts/generate-favicons.ts",
     "prettier:check": "prettier --check . --ignore-path .gitignore",
     "prettier:write": "prettier --write . --ignore-path .gitignore",
     "astro:check": "astro check",
-    "ts:check": "tsc --jsx preserve --skipLibCheck",
+    "ts:check": "bun run tsc --jsx preserve --skipLibCheck",
     "check": "concurrently bun:*:check"
   },
   "dependencies": {
@@ -72,12 +72,12 @@
     "nanoid": "^5.0.7",
     "sharp": "^0.33.3",
     "simple-concat": "^1.0.1",
-    "vite": "^5.2.9"
+    "vite": "^5.2.9",
+    "zod": "4.1.13"
   },
   "devDependencies": {
     "@astrojs/react": "^3.3.0",
     "@astrojs/tailwind": "^5.1.0",
-    "@percy/cli": "^1.28.3",
     "@types/marked": "^6.0.0",
     "astro": "^4.6.2",
     "astro-compress": "^2.2.22",
@@ -104,10 +104,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KonradSzwarc/devscard.git"
+    "url": "git+https://github.com/PixPMusic/portfolio.git"
   },
   "bugs": {
-    "url": "https://github.com/KonradSzwarc/devscard/issues"
+    "url": "https://github.com/PixPMusic/portfolio/issues"
   },
-  "homepage": "https://github.com/KonradSzwarc/devscard#readme"
+  "homepage": "https://pixp.cc"
 }

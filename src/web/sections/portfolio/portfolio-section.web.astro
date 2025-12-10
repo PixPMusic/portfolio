@@ -7,7 +7,7 @@ import Project from './project.astro';
 
 export interface Props extends PortfolioSection {}
 
-const { config, projects } = Astro.props;
+const { config, projects = [] } = Astro.props;
 ---
 
 <SectionCard {...config}>

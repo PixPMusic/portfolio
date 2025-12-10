@@ -1,28 +1,103 @@
 ---
-import type { SubSection } from '@/types/sections/favorites-section.types';
 import Typography from '@/web/components/typography.astro';
 
 export interface Props {
-  subSection?: SubSection;
-  minTileWidth: number;
+  title: string;
+  size?: 'tall' | 'square' | 'wide';
+  count: number;
 }
 
-const { subSection, minTileWidth } = Astro.props;
+const { title, size = 'tall', count } = Astro.props;
+
+// Generate a unique ID for this subsection to scope styles
+const id = `favorites-subsection-${title.toLowerCase().replace(/\s+/g, '-')}`;
+
+function calculateColumns(count: number, min: number, max: number): number {
+  // 1. Try to find a column count that divides perfectly
+  for (let c = max; c >= min; c--) {
+    if (count % c === 0) return c;
+  }
+
+  // 2. Fallback: Find column count that minimizes empty space (maximize remainder)
+  // Actually, we want to maximize the "fullness" of the last row, or just pick the max if it's "good enough"
+  // The user prompt said: "8 results in 4/4 not 6+2".
+  // 8 % 6 = 2 (remainder 2, 4 empty spots)
+  // 8 % 5 = 3 (remainder 3, 2 empty spots)
+  // 8 % 4 = 0 (perfect)
+
+  // Let's stick to the user's "modulo" hint: "best use of space at all times even when we overflow"
+  // We want to maximize (count % c) / c? No, we want (count % c) to be 0 or close to c.
+  // Actually, if we can't divide perfectly, we might prefer a balanced look?
+  // But the user specifically asked for "best use of space".
+  // Let's iterate and find the one with the smallest "missing" items to complete the row?
+  // Missing = (c - (count % c)) % c. We want to minimize this.
+
+  let bestC = max;
+  let minMissing = Infinity;
+
+  for (let c = max; c >= min; c--) {
+    const remainder = count % c;
+    const missing = remainder === 0 ? 0 : c - remainder;
+
+    if (missing < minMissing) {
+      minMissing = missing;
+      bestC = c;
+    }
+    // If tie, we prefer larger C (already iterating downwards, so we keep the first/largest one if we did min... wait)
+    // If we iterate max down to min, and we want larger C, we should update if missing <= minMissing?
+    // No, if missing is 0, we take it immediately.
+    if (missing === 0) return c;
+  }
+
+  return bestC;
+}
+
+const ranges = {
+  tall: { desktop: [3, 4] as const, tablet: [2, 3] as const, sm: [2, 3] as const, mobile: [1, 1] as const },
+  square: { desktop: [4, 6] as const, tablet: [3, 4] as const, sm: [2, 3] as const, mobile: [1, 2] as const },
+  wide: { desktop: [2, 4] as const, tablet: [2, 3] as const, sm: [1, 1] as const, mobile: [1, 1] as const },
+}[size];
+
+const colsDesktop = calculateColumns(count, ranges.desktop[0], ranges.desktop[1]);
+const colsTablet = calculateColumns(count, ranges.tablet[0], ranges.tablet[1]);
+const colsSm = calculateColumns(count, ranges.sm[0], ranges.sm[1]);
+const colsMobile = calculateColumns(count, ranges.mobile[0], ranges.mobile[1]);
 ---
 
-{
-  subSection && (
-    <div class="flex flex-col gap-6">
-      <Typography variant="section-subtitle">{subSection.title}</Typography>
-      <div class="tile grid gap-8" style={{ '--min-tile-width': `${minTileWidth}px` }}>
-        <slot />
-      </div>
-    </div>
-  )
-}
+<div class="flex flex-col gap-6" id={id}>
+  <Typography variant="section-subtitle">{title}</Typography>
+  <div class="tile grid gap-4 sm:gap-6 md:gap-8">
+    <slot />
+  </div>
+</div>
+
+<style define:vars={{ colsDesktop, colsTablet, colsSm, colsMobile }} is:global>
+  /* We use is:global with a unique ID selector because define:vars on a scoped style
+     doesn't support media queries easily with dynamic variables in the same way we want
+     (we want to change the variable value or the property value at breakpoints).
+     Actually, we can just use CSS variables and update them in media queries?
+     No, Astro define:vars sets them as inline styles on the element.
+     So we can use those variables in the scoped style.
+  */
+</style>
 
 <style>
   .tile {
-    grid-template-columns: repeat(auto-fill, minmax(var(--min-tile-width), 1fr));
+    grid-template-columns: repeat(var(--colsMobile), 1fr);
+  }
+  @media (min-width: 640px) {
+    .tile {
+      grid-template-columns: repeat(var(--colsSm), 1fr);
+    }
+  }
+  @media (min-width: 768px) {
+    .tile {
+      grid-template-columns: repeat(var(--colsTablet), 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .tile {
+      grid-template-columns: repeat(var(--colsDesktop), 1fr);
+    }
   }
 </style>

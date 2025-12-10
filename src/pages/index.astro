@@ -10,15 +10,14 @@ import EducationSection from '@/web/sections/education/education-section.web.ast
 import TestimonialsSection from '@/web/sections/testimonials/testimonials-section.web.astro';
 import FavoritesSection from '@/web/sections/favorites/favorites-section.web.astro';
 import cv from '@/data';
+import { hideSection } from '@/data/_internals/transformers';
 
-const { config, sections } = cv();
+const { config, sections } = await cv(hideSection('favorites'));
 ---
 
 <Layout {...config} sections={sections}>
   <ThemeToggle />
-  <main
-    class="w-full max-w-5xl space-y-4 px-2 py-3 sm:space-y-6 sm:px-8 sm:py-12 lg:space-y-8 lg:py-20"
-  >
+  <main class="w-full max-w-5xl space-y-4 px-2 py-3 sm:space-y-6 sm:px-8 sm:py-12 lg:space-y-8 lg:py-20">
     <MainSection {...sections.main} />
     <SkillsSection {...sections.skills} />
     <ExperienceSection {...sections.experience} />

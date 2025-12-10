@@ -16,7 +16,7 @@ const { title, slug, hideTitle, className, visible } = Astro.props;
       id={slug}
       data-type="section"
       class:list={[
-        'flex flex-col gap-6 rounded-2xl bg-primary-50 p-8 shadow-md dark:bg-gray-800 border-4 border-secondary-200 dark:border-secondary-800',
+        'flex flex-col gap-6 rounded-2xl border-4 border-secondary-200 bg-primary-50 p-8 shadow-md dark:border-secondary-800 dark:bg-gray-800',
         className,
       ]}
     >
@@ -32,8 +32,7 @@ const { title, slug, hideTitle, className, visible } = Astro.props;
 
   const sections = [...document.querySelectorAll('[data-type="section"]')];
 
-  const isInUpperView = (section: Element) =>
-    section.getBoundingClientRect().bottom >= window.innerHeight / 3;
+  const isInUpperView = (section: Element) => section.getBoundingClientRect().bottom >= window.innerHeight / 3;
 
   const updateHash = () => {
     const currentSection = sections.find(isInUpperView);

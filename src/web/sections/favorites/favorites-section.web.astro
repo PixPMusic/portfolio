@@ -1,31 +1,36 @@
 ---
 import type { FavoritesSection } from '@/types/sections/favorites-section.types';
 
-import BookTile from './book-tile.astro';
-import MediaTile from './media-tile.astro';
-import PersonTile from './person-tile.astro';
-import VideoTile from './video-tile.astro';
+import FavoriteTile from './favorite-tile.astro';
 import SectionCard from '@/web/components/section-card.astro';
 import FavoritesSubSection from './favorites-sub-section.astro';
 
-export interface Props extends FavoritesSection {}
+export interface Props extends FavoritesSection {
+  favorites?: Array<{
+    title: string;
+    size: 'tall' | 'square' | 'wide';
+    items: Array<{
+      title: string;
+      subtitle?: string;
+      image: any;
+      url: string;
+    }>;
+  }>;
+}
 
-const { config, books, medias, people, videos } = Astro.props;
+const { config, favorites = [] } = Astro.props;
 ---
 
 <SectionCard {...config}>
   <div class="flex flex-col gap-16">
-    <FavoritesSubSection minTileWidth={160} subSection={books}>
-      {books?.data.map((book) => <BookTile {...book} />)}
-    </FavoritesSubSection>
-    <FavoritesSubSection minTileWidth={120} subSection={people}>
-      {people?.data.map((person) => <PersonTile {...person} />)}
-    </FavoritesSubSection>
-    <FavoritesSubSection minTileWidth={204} subSection={videos}>
-      {videos?.data.map((video) => <VideoTile {...video} />)}
-    </FavoritesSubSection>
-    <FavoritesSubSection minTileWidth={120} subSection={medias}>
-      {medias?.data.map((media) => <MediaTile {...media} />)}
-    </FavoritesSubSection>
+    {
+      favorites.map((section) => (
+        <FavoritesSubSection title={section.title} size={section.size} count={section.items.length}>
+          {section.items.map((item) => (
+            <FavoriteTile {...item} size={section.size} />
+          ))}
+        </FavoritesSubSection>
+      ))
+    }
   </div>
 </SectionCard>

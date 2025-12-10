@@ -1,5 +1,5 @@
 ---
-import Description from '@/components/description.astro';
+import DescriptionComponent from '@/components/description.astro';
 import { variantToClassName } from './typography.astro';
 
 export interface Props {
@@ -10,4 +10,4 @@ export interface Props {
 const { content, class: className } = Astro.props;
 ---
 
-<Description content={content} classList={[variantToClassName.paragraph, className]} />
+<DescriptionComponent content={content} classList={[variantToClassName.paragraph, className]} />

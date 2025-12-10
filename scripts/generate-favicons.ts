@@ -34,7 +34,7 @@ const clearFaviconsDir = async () => {
 };
 
 const saveFaviconAsset = async (file: FaviconFile | FaviconImage) => {
-  await writeFile(`${FAVICONS_DIR}/${file.name}`, file.contents);
+  await writeFile(`${FAVICONS_DIR}/${file.name}`, file.contents as any);
 
   console.log(`${file.name} has been created successfully`);
 };

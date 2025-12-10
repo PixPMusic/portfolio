@@ -32,7 +32,6 @@ const mainSectionData = {
       value: 'PixPMusic',
       url: 'https://github.com/PixPMusic',
     },
-    { label: 'Phone', value: '734 480 8565' },
     {
       label: 'Website',
       value: 'pixp.cc',
@@ -41,11 +40,7 @@ const mainSectionData = {
   ],
   description:
     'I am a Technical Support Engineer with a background in Computer Science and a passion for development. I am always looking for new opportunities to learn and grow as a developer.',
-  tags: [
-    { name: 'Bug Battler' },
-    { name: 'Documentation Deity' },
-    { name: 'Ticket Tamer' },
-  ],
+  tags: [{ name: 'Bug Battler' }, { name: 'Documentation Deity' }, { name: 'Ticket Tamer' }],
   action: {
     label: 'Download CV',
     url: '/cv.pdf',

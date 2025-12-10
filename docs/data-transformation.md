@@ -9,7 +9,7 @@ For example:
 ```javascript
 import cv, { hideProject, hideSkillSet, renameSkillSet } from '@/data';
 
-cv(
+const { config, sections } = await cv(
   // [skills] Skill set with name "I want to learn" won't be displayed
   hideSkillSet('I want to learn'),
 
@@ -17,7 +17,7 @@ cv(
   renameSkillSet('I speak', 'Languages'),
 
   // [portfolio] "Disco Ninjas" project won't be visible
-  hideProject('Disco Ninjas')
+  hideProject('Disco Ninjas'),
 );
 ```
 

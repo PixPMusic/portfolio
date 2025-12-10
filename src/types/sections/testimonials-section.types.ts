@@ -1,4 +1,4 @@
-import type { Photo, LinkButton, Section } from '../shared';
+import type { Photo, LinkButton, Section, LabelledValue } from '../shared';
 
 export interface Testimonial {
   /**
@@ -28,12 +28,17 @@ export interface Testimonial {
   /**
    * [WEB] Social media (e.g. LinkedIn profile, website) of the testimonial author.
    */
-  links: LinkButton[];
+  links?: LinkButton[];
+
+  /**
+   * [PDF] Labeled-value pairs that will be used in the PDF version of your resume.
+   */
+  pdfDetails?: LabelledValue[];
 }
 
 export interface TestimonialsSection extends Section {
   /**
    * [WEB] List of your testimonials in a chronological order. Start with the most recent one.
    */
-  testimonials: Testimonial[];
+  testimonials?: Testimonial[];
 }

@@ -1,20 +1,36 @@
 ---
-import type { DateRange } from '@/types/shared';
+import type { DateRange, LabelledValue } from '@/types/shared';
 import DateRangeTag from './date-range-tag.astro';
+import Icon from '@/web/components/icon.astro';
 
 export interface Props {
   title: string;
   subtitle?: string;
-  dates: DateRange;
+  dates?: DateRange;
+  iconLink?: LabelledValue;
 }
 
-const { title, subtitle, dates } = Astro.props;
+const { title, subtitle, dates, iconLink } = Astro.props;
 ---
 
 <div>
   <div class="flex items-start justify-between">
-    <div class="text-lg font-extrabold text-gray-900">{title}</div>
-    <DateRangeTag class="mt-0.5" dates={dates} />
+    <div>
+      <div class="text-lg font-extrabold text-gray-900">{title}</div>
+      {subtitle && <div class="text-md -mt-0.5 font-medium text-gray-700">{subtitle}</div>}
+    </div>
+    {
+      iconLink ? (
+        <a
+          href={iconLink.url}
+          class="flex h-6 w-fit items-center whitespace-nowrap rounded bg-gray-800 px-2.5 text-sm font-medium text-white"
+        >
+          {iconLink.icon && <Icon name={iconLink.icon} size={16} class="mr-2" />}
+          {iconLink.value}
+        </a>
+      ) : (
+        dates && <DateRangeTag class="mt-0.5" dates={dates} />
+      )
+    }
   </div>
-  {subtitle && <div class="text-md -mt-0.5 font-medium text-gray-700">{subtitle}</div>}
 </div>

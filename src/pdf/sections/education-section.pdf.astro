@@ -7,7 +7,7 @@ import SectionHeading from '../components/section-heading.astro';
 
 export interface Props extends EducationSection {}
 
-const { config, diplomas } = Astro.props;
+const { config, diplomas = [] } = Astro.props;
 ---
 
 <div>

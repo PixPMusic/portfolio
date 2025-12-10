@@ -1,0 +1,36 @@
+---
+import Photo from '@/components/photo.astro';
+import Typography from '@/web/components/typography.astro';
+
+export interface Props {
+  title: string;
+  subtitle?: string;
+  image: ImageMetadata;
+  url: string;
+  size?: 'tall' | 'square' | 'wide';
+}
+
+const { title, subtitle, image, url, size = 'tall' } = Astro.props;
+
+const aspectRatio = {
+  tall: 'aspect-[3/4]',
+  square: 'aspect-square',
+  wide: 'aspect-video',
+}[size];
+---
+
+<a href={url} target="_blank" class="flex w-full flex-col gap-3 transition duration-300 hover:translate-y-2">
+  <Photo
+    src={image}
+    alt={title}
+    class:list={[aspectRatio, 'w-full rounded-lg object-cover shadow-md']}
+    width={300}
+    height={400}
+  />
+  <div class="w-full gap-1">
+    <Typography variant="tile-title">
+      {title}
+    </Typography>
+    {subtitle && <Typography variant="tile-subtitle">{subtitle}</Typography>}
+  </div>
+</a>

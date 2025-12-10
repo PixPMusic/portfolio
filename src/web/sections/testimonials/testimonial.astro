@@ -7,7 +7,7 @@ import Thumbnail from '@/web/components/thumbnail.astro';
 
 export interface Props extends Testimonial {}
 
-const { author, content, image, links, relation } = Astro.props;
+const { author, content, image, links = [], relation } = Astro.props;
 ---
 
 <div class="flex w-full flex-col gap-4">

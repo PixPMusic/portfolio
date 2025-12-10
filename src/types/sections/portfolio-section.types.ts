@@ -19,6 +19,11 @@ export interface Project {
   name: string;
 
   /**
+   * Subtitle of the project.
+   */
+  subtitle?: string;
+
+  /**
    * [WEB] Logo of the project.
    *
    * **Ratio**: 1:1
@@ -65,14 +70,14 @@ export interface Project {
   /**
    * [WEB] Links related to your project (e.g. GitHub repository, live demo, mockups).
    */
-  links: LinkButton[];
+  links?: LinkButton[];
 }
 
 export interface PortfolioSection extends Section {
   /**
    * List of your projects in a chronological order. Start with the most recent one.
    */
-  projects: Project[];
+  projects?: Project[];
 
   config: Section['config'] & {
     /**

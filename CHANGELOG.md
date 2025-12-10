@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.0] - 2025-12-09
+
+### Breaking
+
+- Migrated data layer to **Content Collections** for easier data management.
+
+### Features
+
+- Updated documentation and deployment workflows.
+- Cleaned up remaining Node.js references for full **Bun** adoption.
+
+## [0.4.0] - 2025-11-01
+
+### Breaking
+
+- Migrated framework to **Astro 4**.
+- Switched package manager and runtime to **Bun**.
+
 ## [0.3.0] - 2023-08-25
 
 ### Breaking
