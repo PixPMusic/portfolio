@@ -24,7 +24,7 @@ tags:
   - nodeJs
 links:
   - name: GitHub
-    url: https://github.com/PixPMusic/gopher-automate
+    url: https://github.com/PixPMusic/TheatreBot
     icon: fa6-brands:github
 ---
 
