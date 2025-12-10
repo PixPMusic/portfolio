@@ -24,13 +24,13 @@ const { action, config, description, details, fullName, image, links, role, tags
           alt={fullName}
           width={320}
           height={320}
-          class="h-32 w-32 max-w-none rounded-lg border-4 border-secondary-200 dark:border-secondary-800 sm:h-36 sm:w-36 md:h-52 md:w-52"
+          class="border-secondary-200 dark:border-secondary-800 h-32 w-32 max-w-none rounded-lg border-4 sm:h-36 sm:w-36 md:h-52 md:w-52"
         />
       </div>
       <DownloadButton class="fit-content" {...action} />
     </div>
     <div class="flex w-full flex-col gap-5">
-      <div class="flex flex-row items-start xs:gap-4">
+      <div class="xs:gap-4 flex flex-row items-start">
         <div class="sm:hidden print:hidden">
           <Photo
             src={image}
@@ -38,7 +38,7 @@ const { action, config, description, details, fullName, image, links, role, tags
             alt={fullName}
             width={320}
             height={320}
-            class="hidden h-24 w-24 max-w-none rounded-lg border-4 border-secondary-200 dark:border-secondary-800 sm:h-36 sm:w-36 md:h-52 md:w-52 xs:inline"
+            class="border-secondary-200 dark:border-secondary-800 xs:inline hidden h-24 w-24 max-w-none rounded-lg border-4 sm:h-36 sm:w-36 md:h-52 md:w-52"
           />
         </div>
         <div class="flex w-full flex-col justify-between gap-2 sm:flex-row">

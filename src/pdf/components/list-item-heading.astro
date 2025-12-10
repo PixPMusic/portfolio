@@ -23,7 +23,7 @@ const { title, subtitle, dates, iconLink } = Astro.props;
       iconLink ? (
         <a
           href={iconLink.url}
-          class="flex h-6 w-fit items-center whitespace-nowrap rounded bg-gray-800 px-2.5 text-sm font-medium text-white"
+          class="flex h-6 w-fit items-center rounded bg-gray-800 px-2.5 text-sm font-medium whitespace-nowrap text-white"
         >
           {iconLink.icon && <Icon name={iconLink.icon} size={16} class="mr-2" />}
           {iconLink.value}
