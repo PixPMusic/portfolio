@@ -1,7 +1,7 @@
 {
   "name": "pixels-portfolio",
   "description": "Alex Jankowiak's Personal Portfolio & CV",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
   "author": "Alex Jankowiak <me@pixp.cc>",
   "trustedDependencies": [

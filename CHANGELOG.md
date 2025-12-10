@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.1] - 2025-12-09
+
+### Fixes
+
+- Fixed PDF layout issues.
+
 ## [0.5.0] - 2025-12-09
 
 ### Breaking

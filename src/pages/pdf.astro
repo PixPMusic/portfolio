@@ -47,21 +47,21 @@ const shouldRenderSection = (section: keyof typeof sections) => sections[section
     }
     {
       shouldRenderSection('experience') && (
-        <div class="mb-4">
+        <div>
           <ExperienceSection {...sections.experience} />
         </div>
       )
     }
     {
       shouldRenderSection('portfolio') && (
-        <div class="break-before-page">
+        <div class="mb-4 break-before-page">
           <PortfolioSection {...sections.portfolio} />
         </div>
       )
     }
     {
       shouldRenderSection('education') && (
-        <div class="mb-4">
+        <div class="">
           <EducationSection {...sections.education} />
         </div>
       )
