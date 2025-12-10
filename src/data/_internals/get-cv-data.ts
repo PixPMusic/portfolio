@@ -41,7 +41,7 @@ async function loadExperienceJobs(): Promise<Job[]> {
         company,
         dates: dates as DateRange,
         image,
-        description: entry.body,
+        description: entry.body ?? '',
         tagsList: {
           title: 'Technologies',
           tags: resolvedTags,
@@ -66,7 +66,7 @@ async function loadEducationDiplomas(): Promise<Diploma[]> {
         institution,
         dates: dates as DateRange,
         image,
-        description: description || entry.body,
+        description: description || entry.body || '',
         links: (links || []) as LinkButton[],
       };
     });
@@ -99,7 +99,7 @@ async function loadPortfolioProjects(): Promise<Project[]> {
         subtitle,
         dates: dates as DateRange,
         image,
-        description: entry.body,
+        description: entry.body ?? '',
         details,
         pdfDetails: (pdfDetails || []).map((detail: any) => ({
           ...detail,
@@ -124,7 +124,7 @@ async function loadTestimonials(): Promise<Testimonial[]> {
       ...detail,
       icon: detail.icon as IconName | undefined,
     })) as LabelledValue[],
-    content: entry.body,
+    content: entry.body ?? '',
   }));
 }
 

@@ -1,7 +1,7 @@
-import tailwind from '@astrojs/tailwind';
 import compress from 'astro-compress';
 import { defineConfig } from 'astro/config';
 import { visualizer } from 'rollup-plugin-visualizer';
+import tailwindcss from '@tailwindcss/vite';
 //import node from '@astrojs/node';
 
 // https://astro.build/config
@@ -10,8 +10,8 @@ export default defineConfig({
   //adapter: node({
   //  mode: 'standalone',
   //}),
-  integrations: [tailwind(), compress()],
+  integrations: [compress()],
   vite: {
-    plugins: [visualizer()],
+    plugins: [tailwindcss(), visualizer()],
   },
 });

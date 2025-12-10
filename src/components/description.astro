@@ -35,6 +35,8 @@ const { content, classList } = Astro.props;
 <div set:html={parseMarkdown(content)} class:list={['description', ...classList]} />
 
 <style is:global>
+  @reference "../index.css";
+
   .description ul {
     @apply list-disc pl-5;
   }

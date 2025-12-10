@@ -2,6 +2,50 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6.0] - 2025-12-10
+
+### Breaking
+
+- Migrated to **TailwindCSS v4** with CSS-first configuration (`@theme` directive).
+  - Configuration moved from `tailwind.config.cjs` to `src/index.css`
+  - Uses `@tailwindcss/vite` plugin (preferred for Vite-based frameworks like Astro)
+  - Default border color is now `currentColor` (was `gray-200`)
+  - Default ring width is now `1px` (was `3px`)
+  - Browser support: Safari 16.4+, Chrome 111+, Firefox 128+
+- Migrated to **Astro 5** with the new Content Layer API.
+  - Content config moved from `src/content/config.ts` to `src/content.config.ts`
+  - Collections now use `glob()` loaders instead of `type: 'content'`
+- Minimum Node.js version is now **20** (was 18)
+
+### Features
+
+- Improved build performance with TailwindCSS v4's Oxide engine (Rust-based)
+- Added `@tailwindcss/postcss` for unified CSS processing
+- Vite 6 support via Astro 5
+
+### Dependencies
+
+- Updated `tailwindcss` from 3.4.18 to 4.1.17
+- Updated `astro` from 4.16.19 to 5.16.4
+- Updated `@astrojs/check` from 0.5.10 to 0.9.6
+- Updated `@astrojs/node` from 8.3.4 to 9.5.1
+- Updated `@astrojs/react` from 3.6.3 to 4.4.2
+- Updated `@playform/document` from 0.0.6 to 0.1.6
+- Updated `concurrently` from 8.2.2 to 9.2.1
+- Updated `date-fns` from 3.6.0 to 4.1.0
+- Updated `express` from 4.22.1 to 5.2.1
+- Updated `iconify-icon` from 2.3.0 to 3.0.2
+- Updated `immer` from 10.2.0 to 11.0.1
+- Updated `marked` from 12.0.2 to 17.0.1
+- Updated `prettier-plugin-astro` from 0.13.0 to 0.14.1
+- Updated `prettier-plugin-tailwindcss` from 0.5.14 to 0.7.2
+- Updated `puppeteer` from 22.15.0 to 24.32.1
+- Updated `rollup-plugin-visualizer` from 5.14.0 to 6.0.5
+- Updated `sharp` from 0.33.5 to 0.34.5
+- Updated `type-fest` from 4.41.0 to 5.3.1
+- Removed `@astrojs/tailwind` (replaced by `@tailwindcss/postcss`)
+- Removed `vite` direct dependency (bundled with Astro 5)
+
 ## [0.5.1] - 2025-12-09
 
 ### Fixes

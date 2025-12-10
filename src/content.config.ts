@@ -1,7 +1,13 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+
+// ==========================================================================
+// Astro 5 Content Layer Configuration
+// Migrated from src/content/config.ts to use glob() loaders
+// ==========================================================================
 
 const experience = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/experience' }),
   schema: ({ image }) =>
     z.object({
       role: z.string(),
@@ -22,7 +28,7 @@ const experience = defineCollection({
 });
 
 const education = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/education' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -43,7 +49,7 @@ const education = defineCollection({
 });
 
 const portfolio = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/portfolio' }),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
@@ -88,7 +94,7 @@ const portfolio = defineCollection({
 });
 
 const testimonials = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/testimonials' }),
   schema: ({ image }) =>
     z.object({
       author: z.string(),
@@ -117,7 +123,7 @@ const testimonials = defineCollection({
 });
 
 const skills = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/skills' }),
   schema: z.object({
     title: z.string(),
     skills: z.array(
@@ -131,7 +137,7 @@ const skills = defineCollection({
 });
 
 const favorites = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/favorites' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),

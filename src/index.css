@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+
+/* ==========================================================================
+   TailwindCSS v4 Theme Configuration
+   Migrated from tailwind.config.cjs - CSS-first configuration approach
+   ========================================================================== */
+
+@theme {
+  /* Colors - Custom palette with purple as primary, sky as secondary */
+  --color-primary-50: oklch(0.977 0.014 308.3);
+  --color-primary-100: oklch(0.946 0.033 307.17);
+  --color-primary-200: oklch(0.902 0.063 306.7);
+  --color-primary-300: oklch(0.827 0.119 306.38);
+  --color-primary-400: oklch(0.714 0.203 305.5);
+  --color-primary-500: oklch(0.627 0.265 303.9);
+  --color-primary-600: oklch(0.558 0.288 302.32);
+  --color-primary-700: oklch(0.496 0.265 301.92);
+  --color-primary-800: oklch(0.438 0.218 303.7);
+  --color-primary-900: oklch(0.381 0.176 304.99);
+  --color-primary-950: oklch(0.291 0.149 302.72);
+
+  --color-secondary-50: oklch(0.977 0.014 236.62);
+  --color-secondary-100: oklch(0.951 0.026 236.82);
+  --color-secondary-200: oklch(0.901 0.058 230.9);
+  --color-secondary-300: oklch(0.828 0.111 230.32);
+  --color-secondary-400: oklch(0.746 0.16 232.66);
+  --color-secondary-500: oklch(0.685 0.169 237.32);
+  --color-secondary-600: oklch(0.588 0.158 241.97);
+  --color-secondary-700: oklch(0.5 0.134 242.75);
+  --color-secondary-800: oklch(0.443 0.11 240.79);
+  --color-secondary-900: oklch(0.391 0.09 240.88);
+  --color-secondary-950: oklch(0.293 0.066 243.16);
+
+  /* Border widths - Custom scale from original config */
+  --border-width-default: 1px;
+  --border-width-0: 0;
+  --border-width-2: 2px;
+  --border-width-3: 4px;
+  --border-width-4: 3px;
+  --border-width-6: 12px;
+  --border-width-8: 16px;
+
+  /* Spacing - Additional values */
+  --spacing-18: 4.5rem;
+
+  /* Font family - Tilt Neon as primary, Red Hat Display as fallback */
+  --font-sans:
+    'Tilt Neon', 'Red Hat Display', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+
+  /* Custom keyframes for show animation */
+  --animate-show: show 225ms ease-in-out;
+
+  /* Custom screens */
+  --breakpoint-xs: 411px;
+}
+
+/* Show animation keyframes */
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Print media query variant */
+@custom-variant print (@media print);
+
+/* Dark mode via class on html/body (matches original darkMode: ['class']) */
+@custom-variant dark (&:where(.dark, .dark *));
