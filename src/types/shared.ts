@@ -1,18 +1,18 @@
-import type { CircleFlags, Fa6Brands, Fa6Solid, Ri, SimpleIcons } from 'iconify-icon-names';
+import type { CircleFlags, Fa6Brands, Fa6Solid, Pajamas, Ri, SimpleIcons } from 'iconify-icon-names';
 
 /**
  * Name of the icon from the iconify library.
  *
  * @see https://icon-sets.iconify.design
  */
-export type IconName = Fa6Brands | Fa6Solid | SimpleIcons | CircleFlags | Ri;
+export type IconName = Fa6Brands | Fa6Solid | Pajamas | SimpleIcons | CircleFlags | Ri | 'simple-icons:opentofu';
 
 /**
  * - Dynamic import of the image from `src/assets` folder. Recommended as it enables image optimization.
  * - Path to the image placed in the `public` folder.
  * - URL of the image stored online.
  */
-export type Photo = Promise<{ default: ImageMetadata }> | string;
+export type Photo = Promise<{ default: ImageMetadata }> | string | ImageMetadata;
 
 /**
  * Two date objects representing some time period.
@@ -41,7 +41,7 @@ export interface SectionConfig {
   icon: IconName;
 
   /**
-   * Should section be displayed on the page.
+   * Should section be displayed.
    */
   visible: boolean;
 }
@@ -74,6 +74,11 @@ export interface LabelledValue {
    * [PDF] When labelled value is displayed in a grid, it will span the whole row.
    */
   fullRow?: boolean;
+
+  /**
+   * [PDF] Icon displayed next to the value.
+   */
+  icon?: IconName;
 }
 
 export interface Tag {

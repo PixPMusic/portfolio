@@ -14,12 +14,12 @@ export interface Props extends Project {
   screenshotsConfig?: PortfolioSection['config']['screenshots'];
 }
 
-const { dates, description, details, image, links, name, tagsList, screenshots, screenshotsConfig } = Astro.props;
+const { dates, description, details, image, links = [], name, tagsList, screenshots, screenshotsConfig } = Astro.props;
 
 const alt = `${name} project thumbnail`;
 
 const galleryId = nanoid(8);
-const hasScreenshots = screenshots?.length && screenshots.length > 0;
+const hasScreenshots = (screenshots?.length ?? 0) > 0;
 const screenshotsIcon = screenshotsConfig?.icon || 'fa6-solid:image';
 const screenshotsTooltip = screenshotsConfig?.title || 'Screenshots';
 ---
@@ -84,7 +84,7 @@ const screenshotsTooltip = screenshotsConfig?.title || 'Screenshots';
       buttons.forEach((button) =>
         button.addEventListener('click', () => {
           new PhotoSwipe(getOptionsForButton(button)).init();
-        })
+        }),
       );
     });
   }

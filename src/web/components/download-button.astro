@@ -2,9 +2,11 @@
 import type { DownloadButton } from '@/types/shared';
 import Typography from './typography.astro';
 
-export interface Props extends DownloadButton {}
+export interface Props extends DownloadButton {
+  class?: string;
+}
 
-const { url, downloadedFileName, label } = Astro.props;
+const { url, downloadedFileName, label, class: classNameProp } = Astro.props;
 
 const classes = /* tw */ {
   main: 'hidden sm:inline-flex items-center px-2 h-8 sm:px-4 sm:h-10 rounded-md shadow-sm bg-primary-200 dark:bg-secondary-800 dark:hover:bg-primary-800 select-none cursor-pointer',
@@ -14,15 +16,9 @@ const classes = /* tw */ {
     'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-200 dark:focus:ring-4 dark:focus:ring-offset-0 dark:focus:ring-primary-600',
 };
 
-const className = Object.values(classes).join(' ');
+const className = [Object.values(classes).join(' '), classNameProp].filter(Boolean).join(' ');
 ---
 
-<Typography
-  variant="button"
-  as="a"
-  href={url}
-  class={className}
-  download={downloadedFileName}
->
+<Typography variant="button" as="a" href={url} class={className} download={downloadedFileName}>
   {label}
 </Typography>

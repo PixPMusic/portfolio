@@ -7,7 +7,7 @@ import Job from './job.astro';
 
 export interface Props extends ExperienceSection {}
 
-const { config, jobs } = Astro.props;
+const { config, jobs = [] } = Astro.props;
 ---
 
 <SectionCard {...config}>

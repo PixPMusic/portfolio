@@ -6,7 +6,7 @@ import Diploma from './diploma.astro';
 
 export interface Props extends EducationSection {}
 
-const { config, diplomas } = Astro.props;
+const { config, diplomas = [] } = Astro.props;
 ---
 
 <SectionCard {...config}>

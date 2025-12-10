@@ -1,0 +1,44 @@
+---
+import type { FavoritesSection } from '@/types/sections/favorites-section.types';
+import DashedDivider from '../components/dashed-divider.astro';
+import SectionHeading from '../components/section-heading.astro';
+
+export interface Props extends FavoritesSection {
+  favorites?: Array<{
+    title: string;
+    size: 'tall' | 'square' | 'wide';
+    items: Array<{
+      title: string;
+      subtitle?: string;
+      image: any;
+      url: string;
+    }>;
+  }>;
+}
+
+const { config, favorites = [] } = Astro.props;
+---
+
+<div>
+  <SectionHeading>{config.title}</SectionHeading>
+  <div class="mt-1 flex flex-col">
+    {
+      favorites.map((section) => () => (
+        <>
+          <div class="flex flex-col gap-1">
+            <p class="text-sm font-semibold">{section.title}</p>
+            <div class="flex flex-col gap-0.5">
+              {section.items.map((item) => (
+                <p class="text-xs">
+                  <span class="font-medium">{item.title}</span>
+                  {item.subtitle && <span class="text-gray-600"> - {item.subtitle}</span>}
+                </p>
+              ))}
+            </div>
+          </div>
+          <DashedDivider />
+        </>
+      ))
+    }
+  </div>
+</div>

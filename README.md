@@ -1,9 +1,10 @@
-# DevsCard
+# Pixel's Portfolio - a loving fork of Devscard
 
-A fully customizable template to create your online (and paper) resume without writing a single line of code.
+A heavily customized version of [Devscard](https://github.com/KonradSzwarc/devscard), a fully customizable template to create your online (and paper) resume without writing a single line of code--no but actually!
 
 ## Features
 
+- **📝 Markdown data** - provide your data in Markdown files! No more code!
 - **✍️ Intellisense** — provide your data in TypeScript files, getting autocompletion and description of each property right in your IDE.
 - **📱 Responsiveness** — the resume is created and automatically tested to look good both on mobile and desktop devices.
 - **🌠 Assets optimization** — all images in your CV are minimized and resized automatically at build time.
@@ -20,10 +21,10 @@ A fully customizable template to create your online (and paper) resume without w
 
 To learn how to set up your resume, go to:
 
-[https://devscard.gitbook.io/docs](https://devscard.gitbook.io/docs/setup-guide)
+[https://PixPMusic.github.io/portfolio](https://PixPMusic.github.io/portfolio)
 
 ## Example
 
 To see an example CV, visit the link below:
 
-[https://devscard.netlify.app](https://devscard.netlify.app/)
+[https://pixp.cc](https://pixp.cc)

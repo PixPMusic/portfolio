@@ -27,8 +27,6 @@ const stripIndent = (str: string) => {
 const parseMarkdown = (str: string) =>
   marked.parse(stripIndent(str), {
     breaks: true,
-    headerIds: false,
-    mangle: false,
   });
 
 const { content, classList } = Astro.props;

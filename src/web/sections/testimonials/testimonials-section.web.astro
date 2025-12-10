@@ -7,7 +7,7 @@ import Testimonial from './testimonial.astro';
 
 export interface Props extends TestimonialsSection {}
 
-const { testimonials, config } = Astro.props;
+const { config, testimonials = [] } = Astro.props;
 ---
 
 <SectionCard {...config}>

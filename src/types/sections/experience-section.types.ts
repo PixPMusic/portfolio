@@ -46,5 +46,5 @@ export interface ExperienceSection extends Section {
   /**
    * List of your jobs in a chronological order. Start with the most recent one.
    */
-  jobs: Job[];
+  jobs?: Job[];
 }

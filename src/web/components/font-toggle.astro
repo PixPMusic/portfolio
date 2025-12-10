@@ -15,14 +15,10 @@ import Icon from './icon.astro';
   const fontToggle = document.getElementById('font-toggle')!;
 
   const toggleFont = () => {
-    if (
-      document.getElementsByTagName('html')[0].style.fontFamily ===
-      '"Red Hat Display"'
-    ) {
-      document.getElementsByTagName('html')[0].style.fontFamily = 'Tilt Neon';
+    if (document.documentElement.style.fontFamily === '"Red Hat Display"') {
+      document.documentElement.style.fontFamily = 'Tilt Neon';
     } else {
-      document.getElementsByTagName('html')[0].style.fontFamily =
-        'Red Hat Display';
+      document.documentElement.style.fontFamily = 'Red Hat Display';
     }
   };
 

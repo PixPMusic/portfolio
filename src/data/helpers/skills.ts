@@ -18,6 +18,13 @@ skill({ description: '...' }) — returns skill with a description displayed whe
 
 */
 
+export const bun = createSkillFactory({
+  name: 'Bun',
+  icon: 'simple-icons:bun',
+  iconColor: '#2496ED',
+  url: 'https://bun.sh/',
+});
+
 export const cuda = createSkillFactory({
   name: 'CUDA',
   icon: 'simple-icons:nvidia',

@@ -8,7 +8,7 @@ import Typography from '@/web/components/typography.astro';
 
 export interface Props extends Diploma {}
 
-const { title, institution, dates, description, links, image } = Astro.props;
+const { title, institution, dates, description, links = [], image } = Astro.props;
 ---
 
 <div class="flex flex-col gap-3">

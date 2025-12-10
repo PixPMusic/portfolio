@@ -33,12 +33,12 @@ export interface Diploma {
   /**
    * [WEB] Links related to your studies (e.g. course/university website, link to realized project).
    */
-  links: LinkButton[];
+  links?: LinkButton[];
 }
 
 export interface EducationSection extends Section {
   /**
    * List of your diplomas, certificates, .etc. Start with the most recent one.
    */
-  diplomas: Diploma[];
+  diplomas?: Diploma[];
 }

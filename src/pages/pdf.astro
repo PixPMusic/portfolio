@@ -6,39 +6,78 @@ import ExperienceSection from '@/pdf/sections/experience-section.pdf.astro';
 import MainSection from '@/pdf/sections/main-section.pdf.astro';
 import PortfolioSection from '@/pdf/sections/portfolio-section.pdf.astro';
 import SkillsSection from '@/pdf/sections/skills-section.pdf.astro';
+import TestimonialsSection from '@/pdf/sections/testimonials-section.pdf.astro';
+import FavoritesSection from '@/pdf/sections/favorites-section.pdf.astro';
 
 import cv from '@/data';
+import { hideSection } from '@/data/_internals/transformers';
 
-const { config, sections } = cv();
+const { config, sections } = await cv(hideSection('favorites'));
 
-const shouldRenderSection = (section: keyof typeof sections) =>
-  sections[section] && sections[section].config.visible;
+const shouldRenderSection = (section: keyof typeof sections) => sections[section] && sections[section].config.visible;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={config.i18n.locale.code}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>PDF preview</title>
     <Fonts />
+    <style is:global>
+      @page {
+        margin: 10mm;
+      }
+    </style>
   </head>
-  <body class="flex flex-col bg-white p-[10mm] print:p-0">
-    {shouldRenderSection('main') && <MainSection {...sections.main} />}
-    {shouldRenderSection('skills') && <SkillsSection {...sections.skills} />}
+  <body class="flex flex-col bg-white">
+    {
+      shouldRenderSection('main') && (
+        <div class="mb-4">
+          <MainSection {...sections.main} />
+        </div>
+      )
+    }
+    {
+      shouldRenderSection('skills') && (
+        <div class="mb-4">
+          <SkillsSection {...sections.skills} />
+        </div>
+      )
+    }
     {
       shouldRenderSection('experience') && (
-        <ExperienceSection {...sections.experience} />
+        <div class="mb-4">
+          <ExperienceSection {...sections.experience} />
+        </div>
       )
     }
     {
       shouldRenderSection('portfolio') && (
-        <PortfolioSection {...sections.portfolio} />
+        <div class="break-before-page">
+          <PortfolioSection {...sections.portfolio} />
+        </div>
       )
     }
     {
       shouldRenderSection('education') && (
-        <EducationSection {...sections.education} />
+        <div class="mb-4">
+          <EducationSection {...sections.education} />
+        </div>
+      )
+    }
+    {
+      shouldRenderSection('testimonials') && (
+        <div class="mb-4">
+          <TestimonialsSection {...sections.testimonials} />
+        </div>
+      )
+    }
+    {
+      shouldRenderSection('favorites') && (
+        <div class="mb-4">
+          <FavoritesSection {...sections.favorites} />
+        </div>
       )
     }
     {config.pdf?.footer && <Footer>{config.pdf.footer}</Footer>}

@@ -15,10 +15,4 @@ const { src, ...props } = Astro.props;
 const isRemoteImage = typeof src === 'string';
 ---
 
-{
-  isRemoteImage ? (
-    <img src={src} {...props} />
-  ) : (
-    <Image format="webp" fit="cover" loading="eager" src={src} {...props} />
-  )
-}
+{isRemoteImage ? <img src={src as string} {...props} /> : <Image format="webp" loading="eager" src={src} {...props} />}
