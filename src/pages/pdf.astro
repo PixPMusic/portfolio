@@ -34,14 +34,14 @@ const shouldRenderSection = (section: keyof typeof sections) => sections[section
   <body class="flex flex-col bg-white">
     {
       shouldRenderSection('main') && (
-        <div class="mb-4">
+        <div class="mb-2">
           <MainSection {...sections.main} />
         </div>
       )
     }
     {
       shouldRenderSection('skills') && (
-        <div class="mb-4">
+        <div class="mb-2">
           <SkillsSection {...sections.skills} />
         </div>
       )
@@ -55,21 +55,21 @@ const shouldRenderSection = (section: keyof typeof sections) => sections[section
     }
     {
       shouldRenderSection('portfolio') && (
-        <div class="mb-4 break-before-page">
+        <div class="mb-9 break-before-page">
           <PortfolioSection {...sections.portfolio} />
         </div>
       )
     }
     {
       shouldRenderSection('education') && (
-        <div class="">
+        <div class="mb-7">
           <EducationSection {...sections.education} />
         </div>
       )
     }
     {
       shouldRenderSection('testimonials') && (
-        <div class="mb-4">
+        <div class="">
           <TestimonialsSection {...sections.testimonials} />
         </div>
       )
